@@ -10,8 +10,9 @@ function Iterate(){
             # Will not run if no directories are available
             :
         elif [ -d ${f} ]; then
-            echo ${f}
             Iterate $f 
+        elif [[ ${f} == *'.py'* ]]; then
+            echo ${f}
         else 
             :
         fi
