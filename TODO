@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+#cat directories.txt | Directories=$(</dev/stdin)
+
+directories=$(cat directories.txt)
+
+
+IFS=' ' read -ra array <<< "$directories"
+
+echo ${array[0]}
+echo ${array[1]}
