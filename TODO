@@ -3,7 +3,22 @@
 directories=$(cat directories.txt)
 IFS=' ' read -ra array <<< "$directories"
 
+function Iterate(){
+    #ls
+    for f in "$1"/*; do
+        if [[ ${f} == *'node_modules'* ]]; then
+            # Will not run if no directories are available
+            :
+        elif [ -d ${f} ]; then
+            echo ${f}
+            Iterate $f 
+        else 
+            :
+        fi
+    done
+}
+
 for i in ${array[@]}
 do
-    echo $i
+    Iterate $i
 done
